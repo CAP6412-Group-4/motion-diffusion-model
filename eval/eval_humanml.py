@@ -1,3 +1,7 @@
+import sys
+from pathlib import Path
+sys.path.append(str(Path().parent))
+
 from utils.parser_util import evaluation_parser
 from utils.fixseed import fixseed
 from datetime import datetime
@@ -41,6 +45,7 @@ def evaluate_matching_score(eval_wrapper, motion_loaders, file):
                 dist_mat = euclidean_distance_matrix(text_embeddings.cpu().numpy(),
                                                      motion_embeddings.cpu().numpy())
                 matching_score_sum += dist_mat.trace()
+                print(f'id: {idx}  matching_score_sum:{matching_score_sum}')
 
                 argsmax = np.argsort(dist_mat, axis=1)
                 top_k_mat = calculate_top_k(argsmax, top_k=3)

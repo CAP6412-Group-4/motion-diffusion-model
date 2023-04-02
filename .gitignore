@@ -127,3 +127,12 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+dataset/
+t2m/
+save/
+glove/
+body_models/
+
+*saved_tensor_mdm.npy
+*sample.pt

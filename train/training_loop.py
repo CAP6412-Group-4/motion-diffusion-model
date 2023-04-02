@@ -1,3 +1,7 @@
+import sys
+from pathlib import Path
+sys.path.append(str(Path().parent))
+
 import copy
 import functools
 import os
@@ -138,6 +142,10 @@ class TrainLoop:
                 self.run_step(motion, cond)
                 if self.step % self.log_interval == 0:
                     for k,v in logger.get_current().name2val.items():
+                        # print('k')
+                        # print(k)
+                        # print('v')
+                        # print(v)
                         if k == 'loss':
                             print('step[{}]: loss[{:0.5f}]'.format(self.step+self.resume_step, v))
 
@@ -215,6 +223,7 @@ class TrainLoop:
             # Eliminates the microbatch feature
             assert i == 0
             assert self.microbatch == self.batch_size
+
             micro = batch
             micro_cond = cond
             last_batch = (i + self.microbatch) >= batch.shape[0]

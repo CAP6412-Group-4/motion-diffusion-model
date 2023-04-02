@@ -1,0 +1,19 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            // "args": ["--dataset", "humanml","--save_dir", "save/debug"],
+            "args":["--model_path", "./save/debug/model000000000.pt", "--num_samples", "1", "--num_repetitions", "1"],
+            // "args": ["--dataset", "humanml","--batch_size", "64", "--model_path", "save/humanml_trans_enc_512/model000200000.pt", "--eval_mode", "debug"],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        }
+    ]
+}

@@ -225,16 +225,21 @@ class Text2MotionDatasetV2(data.Dataset):
         for name in tqdm(id_list):
             try:
                 motion = np.load(pjoin(opt.motion_dir, name + '.npy'))
+               
                 if (len(motion)) < min_motion_len or (len(motion) >= 200):
+                    # print('motion length')
                     continue
                 text_data = []
                 flag = False
                 with cs.open(pjoin(opt.text_dir, name + '.txt')) as f:
+                    # print("text_dir")
+                    # print(opt.text_dir)
                     for line in f.readlines():
                         text_dict = {}
                         line_split = line.strip().split('#')
                         caption = line_split[0]
                         tokens = line_split[1].split(' ')
+                       
                         f_tag = float(line_split[2])
                         to_tag = float(line_split[3])
                         f_tag = 0.0 if np.isnan(f_tag) else f_tag
@@ -270,7 +275,9 @@ class Text2MotionDatasetV2(data.Dataset):
                     new_name_list.append(name)
                     length_list.append(len(motion))
             except:
+                # print('does not try')
                 pass
+        
 
         name_list, length_list = zip(*sorted(zip(new_name_list, length_list), key=lambda x: x[1]))
 

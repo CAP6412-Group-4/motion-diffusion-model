@@ -2,6 +2,9 @@
 """
 Train a diffusion model on images.
 """
+import sys
+from pathlib import Path
+sys.path.append(str(Path().parent))
 
 import os
 import json
@@ -12,6 +15,7 @@ from train.training_loop import TrainLoop
 from data_loaders.get_data import get_dataset_loader
 from utils.model_util import create_model_and_diffusion
 from train.train_platforms import ClearmlPlatform, TensorboardPlatform, NoPlatform  # required for the eval operation
+
 
 def main():
     args = train_args()
