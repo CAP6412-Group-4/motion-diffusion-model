@@ -241,7 +241,7 @@ def main():
     all_text = []
 
     for rep_i in range(args.num_repetitions):
-        generate_sample(args, model, model_kwargs, rep_i, diffusion, n_frames, data, all_motions, all_lengths, all_text)
+        # generate_sample(args, model, model_kwargs, rep_i, diffusion, n_frames, data, all_motions, all_lengths, all_text)
         print(f'### Sampling [repetitions #{rep_i}]')
 
         # add CFG scale to batch
